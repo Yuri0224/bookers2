@@ -5,6 +5,21 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#ログイン機能。デバイスジェム
+gem 'devise'
+
+#デバック用。binding.pry で処理止めてステップ実行できる
+gem 'pry-rails'
+
+#画像投稿。リファイルジェム
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem 'kaminari'
+gem 'carrierwave'
+
+#CSSフレームワーク
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
