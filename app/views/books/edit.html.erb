@@ -2,22 +2,29 @@
 
 <body>
 
+<div class="container">
+      <div class="row">
+        <div class="col-xs-3">
+				<h1>Editing Book</h1>
+		</div>
+		<br><br><br>
+		<div class="col-xs-9" >
+				<%= form_for(@book) do |b| %>
+				    <label>Title</label><br>
+				    <%= b.text_field :title, :size=> "99" %>
+				    <br><br>
+				    <label>Body</label><br>
+				    <%= b.text_area :body, :size=> "99"%>
+				    <br>
+				    <%= b.submit 'Update Book' %>
+				<% end %>
 
-<h1>Editing Book</h1>
-<%= form_for(@book) do |b| %>
-    <label>Title</label><br>
-    <%= b.text_field :title %>
-    <br><br>
-    <label>Body</label><br>
-    <%= b.text_area :body %>
-    <br>
-    <%= b.submit 'Update Book' %>
-<% end %>
-
-<br>
-<%= link_to 'Show', book_path(@book.id) %>
-｜
-<%= link_to 'Back', '/books/new' %>
+				<br>
+				<%= link_to 'Show', book_path(@book.id) %>
+				｜
+				<%= link_to 'back',books_path  %>
+		</div>
+	</div>
 
 </body>
 

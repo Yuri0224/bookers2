@@ -1,10 +1,24 @@
 class BooksController < ApplicationController
+before_action :authenticate_user!, except: [:top, :about]
+
+  def top
+    if user_signed_in?
+      redirect_to user_path(current_user.id)
+    end
+  end
 
   def index
+    @books = Book.all
+    @new = Book.new
+    @user = current_user
+  end
+
+  def about
   end
 
   def show
-  	@book = Book.find(params[:id])
+    @book = Book.find(params[:id])
+    @new = Book.new
   end
 
   def new
@@ -14,8 +28,9 @@ class BooksController < ApplicationController
 
   def create
   	book = Book.new(book_params)
+    book.user_id = current_user.id
   	book.save
-  	redirect_to book_path(book.id)
+  	redirect_to user_path(current_user.id)
   end
 
   def edit
@@ -31,7 +46,7 @@ class BooksController < ApplicationController
   def destroy
   	book = Book.find(params[:id])
     book.destroy
-    redirect_to new_book_path
+    redirect_to user_path(current_user.id)
   end
 
   private
